@@ -23,12 +23,12 @@ _注_：其实这测量的是wmAddStarting 到 wmFinishStarting的耗时。
 
 # * Start-up Process(个人的理解)
 ### 应用的整个启动过程大致分为5?6?个阶段：
-####1.用户手指点击桌面图标 TouchDown--TouchUp [链接](http://chendongqi.me/2017/02/18/systrace_appLauncher/) 上的down、up参数并没有出现在我抓取的Systrace中，有空研究下Android的Input流程并看看有没有方法得知这段耗时：(
-####2.Launcher处理Touch事件 ，同上后期有空研究
-####3.amStartActivity（可搜此关键字）  AMS处理App的启动 
+#### 1.用户手指点击桌面图标 TouchDown--TouchUp [链接](http://chendongqi.me/2017/02/18/systrace_appLauncher/) 上的down、up参数并没有出现在我抓取的Systrace中，有空研究下Android的Input流程并看看有没有方法得知这段耗时：(
+#### 2.Launcher处理Touch事件 ，同上后期有空研究
+#### 3.amStartActivity（可搜此关键字）  AMS处理App的启动 
 _注：_  why 4 [链接](http://blog.csdn.net/luoshengyang/article/details/8577789)，大概就是Activity组件显示前系统会先显示一个启动窗口
-####4.Starting Window（启动窗口）的初始化、动画（动画时间、开始大小、透明度等）耗时（关键字：wmaddStarting）
-####5.App启动 （bindApplication开始...）-- 第一帧绘制完毕（关键字：finish draw第一帧绘制完毕，但不是马上呈现给用户）
+#### 4.Starting Window（启动窗口）的初始化、动画（动画时间、开始大小、透明度等）耗时（关键字：wmaddStarting）
+#### 5.App启动 （bindApplication开始...）-- 第一帧绘制完毕（关键字：finish draw第一帧绘制完毕，但不是马上呈现给用户）
 _注 :_ 5过程中，如果启动窗口做完动画后，若第一帧未被绘制完成，就会呈现白屏
-####6.第一帧绘制完毕-调用removeStartingWindow-surfaceflinger送帧显示(关键字：wmFinishStarting，remove的时候，surfaceflinger相关的暂时没研究)  
+#### 6.第一帧绘制完毕-调用removeStartingWindow-surfaceflinger送帧显示(关键字：wmFinishStarting，remove的时候，surfaceflinger相关的暂时没研究)  
 _注：_ 456需要同时来看 ， 从连贯性来说，启动窗口在Start到被remove期间，App如果绘制完成，这时候就不会有白屏停留。启动窗口理解为icon到全屏，全屏后（remove掉后）如果未绘制完毕就白屏

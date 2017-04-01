@@ -20,7 +20,7 @@ _注_：Android M(6.0)后，["Better systrace slices for application startup"](h
 ![](pic/sys_launching.png)
 #### 步骤: 1.按 "/" 右上角进行搜索 2.输入launching并点下右侧的->箭头 3.按下m 
 _注_：其实这测量的是wmAddStarting 到 wmFinishStarting的耗时。
-
+***
 # * Start-up Process(个人的理解)
 ### 应用的整个启动过程大致分为5?6?个阶段：
 #### 1.用户手指点击桌面图标 TouchDown--TouchUp [链接](http://chendongqi.me/2017/02/18/systrace_appLauncher/) 上的down、up参数并没有出现在我抓取的Systrace中，有空研究下Android的Input流程并看看有没有方法得知这段耗时：(

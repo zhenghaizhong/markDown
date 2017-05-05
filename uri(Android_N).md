@@ -1,14 +1,14 @@
-#Android N Intent传递(Uri)
-* ##序言
+# Android N Intent传递(Uri)
+* ## 序言
    Android N不再支持通过Intent传递'file://' scheme,官方并推荐使用[FileProvider]('https://developer.android.com/reference/android/support/v4/content/FileProvider.html)的方式去解决.但本人使用过程中遇到了不少问题，借此总结一下，下面的内容是建立在已经了解如何使用FileProvider的基础上的。
 
-* ##分享不崩溃但不成功
+* ## 分享不崩溃但不成功
   使用了FileProvider后，应用进行分享操作虽然不崩溃但还是失败，会有如下的日志：'System.err: java.lang.SecurityException: Permission Denial: opening provider android.support.v4.content.FileProvider from ProcessRecord'(使用FileProvider时，已在AndroidManifest赋予了权限：android:grantUriPermissions="true")      ,        [解决办法](http://stackoverflow.com/questions/18249007/how-to-use-support-fileprovider-for-sharing-content-to-other-apps):赋予权限给所有符合条件应用。猜测原因：应用分享过程中，经过了分享应用后才达到真正分享到的应用，Manifest赋予分享这个应用权限，而真正分享到的应用就没权限了。
 *个人猜测：Manifest的android:grantUriPermissions="true" 是否理解为Context.grantUriPermission(package, Uri, mode_flags)的自动识别package版*
 
 
 ***
-* ##崩溃源码
+* ## 崩溃源码
 应用之所以崩溃查看源码可得：
 *`  startActivity(Intent)` 中：*
 ```java
@@ -76,7 +76,7 @@ public void prepareToLeaveProcess(boolean leavingPackage) {
         }
     }
 ```
-* ##小结
+* ## 小结
 * 1.setResult然后finish这种Intent传递仍可使用以前的Uri（file：//）。
 * 2 .ClipData的情况网上的FileProvider教程举例有的是系统拍照（action：MediaStore.ACTION_IMAGE_CAPTURE）或者系统裁剪(action:com.android.camera.action.CROP)，查源码得出MediaStore.ACTION_IMAGE_CAPTURE的action注释中有写到会使用setClipData，上述的`mClipData.prepareToLeaveProcess() `中：
 ```java
@@ -94,7 +94,7 @@ public void prepareToLeaveProcess(boolean leavingPackage) {
     }
 ```
  
-* ##FileProvider的使用理解
+* ## FileProvider的使用理解
 源码摘自android.support.v4.content.FileProvider
 先解析一下使用FileProvider中，必须的xml中的含义：
 ```java
@@ -286,11 +286,11 @@ public static String getAbsolutePath(String path, String authority) {
 ```
  _备注_：可能官方有解析的代码，但暂时没找到。
  
-* ##VmPolicy方式规避
+* ## VmPolicy方式规避
 其实这都是Andorid N执行了StrictMode API，将如下方法写到Application中就可以规避，成功传递出file://，亲测成功:
 ```java
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
 ```
-* ##最后
+* ## 最后
     如果文中有分析错误或者啥的，欢迎指出.

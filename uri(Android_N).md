@@ -181,7 +181,7 @@ private static PathStrategy parsePathStrategy(Context context, String authority)
 ```
 备注：` TAG_ROOT_PATH = "root-path"`，官方文档未提到到节点，如果你传递的是SD卡或别的分区的文件，就得使用这个节点了，对应的是文件系统的根目录，也就是“/"。
 
-* ##解析Uri中的Path
+* ## 解析Uri中的Path
 
     由FileProvider.getUriForFile(Context context, String authority, File file) 生成的Uri格式是：
     ` Content:// authority/xml中name字段/path`

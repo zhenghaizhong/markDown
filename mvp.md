@@ -1,9 +1,10 @@
 # * 简单使用
-- ###先看下MVP的模式图:
+### 先看下MVP的模式图:
 ![](pic/mvp_model.png)
+
 _注:_ 暂不需理解其逻辑，demo演示完再回来看就明白了，只需要留意其中的元素：
 `  M`、`V`、`P`、`ViewInterface`
-- ###Demo 
+### Demo 
 #### 结构图
 >![](pic/mvp_demo.png) 
 #### M(Model)
@@ -86,7 +87,7 @@ P持有V的引用，在某些情况下就有可能造成内存泄漏。由于P�
  这里的mView指的是对Activity的引用,接着是BaseActivity：
 ![](pic/mvp_baseActivity.png) 
 在onResume时attch,onDestory时detach。上述的initPresenter和此次主题无关，就抽象一下～
-----------------------------------华丽的分割线--------------------------------------
+
 
 最后贴个图，感觉还可以：
    ![](pic/mvp_use.png) 

@@ -45,9 +45,11 @@ _注:_ 暂不需理解其逻辑，demo演示完再回来看就明白了，只需
 ![](pic/mvp_p_expand_list.png)
 
 为了对比之前的图，统一四个新增的类放在了impl包中，而且我觉得这属于P的一部分，就放在了P包下。这里使用了接口DataSourceImpl类：
+
 ![](pic/mvp_p_expand_DataSourceImpl.png)
 
-接下来是两种实现类：
+接下来是两种实现类:
+
 ![](pic/mvp_p_expand_1.png) 
 ![](pic/mvp_p_expand_2.png)
 

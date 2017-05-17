@@ -42,12 +42,15 @@ _注:_ 暂不需理解其逻辑，demo演示完再回来看就明白了，只需
 
 # *P的拓展
 这个其实只是运用了Java的特性 继承 或者接口 都行，相对于MVC来说，方便测试以及拓展类似的业务。看图：
-![](pic/mvp_p_expand_list.png) 
+![](pic/mvp_p_expand_list.png)
+
 为了对比之前的图，统一四个新增的类放在了impl包中，而且我觉得这属于P的一部分，就放在了P包下。这里使用了接口DataSourceImpl类：
-![](pic/mvp_p_expand_DataSourceImpl.png) 
+![](pic/mvp_p_expand_DataSourceImpl.png)
+
 接下来是两种实现类：
 ![](pic/mvp_p_expand_1.png) 
-![](pic/mvp_p_expand_2.png) 
+![](pic/mvp_p_expand_2.png)
+
 上面没啥说的，两组不同的实现，不同的数据源。
 
 最后一个新增的类TaskManager,只是用来管理各种实现，可有可无，但最好还是要啦
@@ -85,10 +88,12 @@ P持有V的引用，在某些情况下就有可能造成内存泄漏。由于P�
 
 对比“一、简单使用”的MVP中增加了两个抽象基类 BasePresenter、BaseActivity，图：
  ![](pic/mvp_basePresenter.png) 
+ 
 这里的mView指的是对Activity的引用,接着是BaseActivity：
 ![](pic/mvp_baseActivity.png) 
 在onResume时attch,onDestory时detach。上述的initPresenter和此次主题无关，就抽象一下～
 
-
+****
 最后贴个图，感觉还可以：
-   ![](pic/mvp_use.png) 
+
+![](pic/mvp_use.png) 

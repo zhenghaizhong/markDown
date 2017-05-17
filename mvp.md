@@ -76,15 +76,16 @@ _注:_ 暂不需理解其逻辑，demo演示完再回来看就明白了，只需
 
    这里使用Rxjava是简洁，而且这种链式编程可随意增加调用返回，尤其在业务越复杂的时候，体现更明显，虽然可能代码量会多一点点..- -!!   
    ![](pic/mvp_rx.png) 
+别问为啥报错，我举个栗子而已.
+
 ****
 
-别问为啥报错，我举个栗子而已.
 #  *内存泄漏的解决
 P持有V的引用，在某些情况下就有可能造成内存泄漏。由于P的数量会在项目中很多（简单的项目就不要用MVP啦），所以通过抽象、泛型来达到复用
 
 对比“一、简单使用”的MVP中增加了两个抽象基类 BasePresenter、BaseActivity，图：
  ![](pic/mvp_basePresenter.png) 
- 这里的mView指的是对Activity的引用,接着是BaseActivity：
+这里的mView指的是对Activity的引用,接着是BaseActivity：
 ![](pic/mvp_baseActivity.png) 
 在onResume时attch,onDestory时detach。上述的initPresenter和此次主题无关，就抽象一下～
 

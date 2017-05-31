@@ -11,13 +11,15 @@ _注_: https://developer.android.com/guide/components/aidl.html
 ## 二.简单使用
 ### 2.1 创建.aidl文件
  ![](pic/aidl_interface.png)
-    下次编译时,在SDK的build-tools中的 aidl工具 会生成对应的.java,如图则会生成**MyInterface.java**,官方称之为**IBinder接口文件**.
+ 
+ 下次编译时,在SDK的build-tools中的 aidl工具 会生成对应的.java,如图则会生成**MyInterface.java**,官方称之为**IBinder接口文件**.
 这也是android编译打包过程中的其中一步.后面将会详细描述这生成的类 .
 _注_:您必须为以上未列出的每个附加类型加入一个 import 语句
 ****
 ### 2.2 实现接口
  ![](pic/aidl_interface_use.png) 
-    扩展Binder接口(MyInterface.Stub()),mBinder是提供给'客户端'使用的.而这种RPC调用是同步调用,应从'客户端'内的线程来调用AIDL服务.
+
+扩展Binder接口(MyInterface.Stub()),mBinder是提供给'客户端'使用的.而这种RPC调用是同步调用,应从'客户端'内的线程来调用AIDL服务.
 **** 
 ### 2.3向客户端公开接口
 扩展Service并实现onBind方法,如上面2.2的图所示.

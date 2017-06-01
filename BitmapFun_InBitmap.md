@@ -149,7 +149,7 @@ private static boolean canUseForInBitmap(
 背景:项目中使用的是Universal-Image-Loader,实现ImageDecoder接口自己去写解析缩略图的代码.没做修改前内存抖动的图(下面的试验均采用相同的测试环境):
 ![](pic/inbitmap_origin.png) 
 
-内存抖动幅度差不多到40M左右.
+    内存抖动幅度差不多到40M左右.
 
 一开始,我在想Recycle的位置,UIL没暴露LruCache的entryRemoved接口,此时和同事的沟通中提起了Adapter中onViewRecycled.
 
@@ -159,13 +159,13 @@ _onViewRecycled触发时机在item移除到屏幕外时_
 onViewRecycled + inMutable = true的情况:
 ![](pic/inbitmap_onviewrecycled_true_inmutable.png) 
 
-内存抖动幅度差不多在7M左右,但是图片错乱了
+    内存抖动幅度差不多在7M左右,但是图片错乱了
 
 onViewRecycled + inMutable = false的情况:
 
 ![](pic/inbitmap_onviewrecycled_false_inmutable.png)
 
-内存抖动幅度差不多在12M左右,显示正常. 
+    内存抖动幅度差不多在12M左右,显示正常. 
 
 总结一波:
       这时候问题来了,为啥这inMutable会导致错乱,如果它为false,inBitmap的用法不生效,那为什么抖动幅度会优化至12M.

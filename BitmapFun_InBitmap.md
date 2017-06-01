@@ -6,7 +6,7 @@ inBitmap是Android3.0后引用的方法,平常的LruCache是缓存数据,而inBi
 
  _代码与BitmapFun的示例代码相差无几_  
  
-###1.1 "Get"
+### 1.1 "Get"
 ```java
     public static Bitmap getImageThumbnail(String filePath) {
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -145,7 +145,7 @@ private static boolean canUseForInBitmap(
 * 这里 使用了WeakReference,而源码中是使用SoftReference.
 原因是SoftReference拥有强引用的属性,只有当内存吃紧将抛出OOM时,才会被回收.比较适用于LruCache的那种缓存.而WeakReference对内存的使用优于SoftReference
 
-##二.踩的坑
+## 二.踩的坑
 背景:项目中使用的是Universal-Image-Loader,实现ImageDecoder接口自己去写解析缩略图的代码.没做修改前内存抖动的图(下面的试验均采用相同的测试环境):
 ![](pic/inbitmap_origin.png) 
 
@@ -187,7 +187,7 @@ onViewRecycled + inMutable = false的情况:
  
  综合上面的,体验和性能二者是对立的,例如当你缓存小了,虽然性能好了,但用户体验是图片要重新加载,而不能马上显示..
  
-##三.原理
+## 三.原理
 假设有A,B,C,D,E五张图片,界面每次只能显示一张,依次显示,内存缓存(Cache)的大小为3,回收缓存(Pool)的大小随意
 
 _注:Cache采取先进先出的算法_

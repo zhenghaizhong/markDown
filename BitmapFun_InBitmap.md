@@ -162,6 +162,7 @@ onViewRecycled + inMutable = true的情况:
 内存抖动幅度差不多在7M左右,但是图片错乱了
 
 onViewRecycled + inMutable = false的情况:
+
 ![](pic/inbitmap_onviewrecycled_false_inmutable.png)
 
 内存抖动幅度差不多在12M左右,显示正常. 
@@ -181,6 +182,7 @@ onViewRecycled + inMutable = false的情况:
 ```
 * 现状
     当LruCache未满时,不会触发inBitmap功效,从测试数据来看,依旧是上述的12M,当我把LruCache的size设置小一点时,如图:
+    
 ![](pic/inbitmap_lru_cache_success.png)
  
     内动抖动幅度差不多在10M左右.

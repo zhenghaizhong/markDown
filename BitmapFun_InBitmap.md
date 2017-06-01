@@ -1,7 +1,7 @@
-#BitmapFun_InBitmap
+# BitmapFun_InBitmap
  [BitmapFun](https://developer.android.com/topic/performance/graphics/manage-memory.html)  是Google官方的一个图片缓存库,基本上图库缓存库的大体流程都差不多,可以好好研究此源码.但此文主要记录BitmapFun中的InBitmap相关的用法以及自己踩的坑- -..,并非此开源库的分析
  
-##一.用法
+## 一.用法
 inBitmap是Android3.0后引用的方法,平常的LruCache是缓存数据,而inBitmap是回收内存进行复用,减少内存申请分配和回收(减低内存抖动幅度喔).同样的,需要有一个容器,然后进行'Get','Put'....
 
  _代码与BitmapFun的示例代码相差无几_  

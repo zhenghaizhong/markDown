@@ -53,13 +53,16 @@ _push产物，不确定全不全对不对，可切到目录后，用ll命令把�
 ## 二、 Ninja相关
 ### 2.1 什么是Ninja
 `类似与Make的注重速度的小型编译系统，旨在提升android的编译速度，ninja默认的入口文件是build.ninja`
+
 ### 2.2 配置Ninja
 android源代码根目录下：`./prebuilts/build-tools/linux-x86/bin/ninja`
 配置到环境变量上：`alias ninja='./prebuilts/build-tools/linux-x86/bin/ninja'` 即可直接使用
+
 ### 2.3 使用Ninja
 `生成入口文件：`  source&lunch完之后，执行`make nothing`
 `全编`： ninja -f out/build-xxx.ninja
-`模块编译（以services.jar为例）`：执行一次 `mmm frameworks/base/services/`，out目录下会生成`build-xxx-_frameworks_base_services_Android.mk.ninja`类似的文件，执行`ninja -f out/build-xxx-_frameworks_base_services_Android.mk.ninja services`即可 ，即`ninja -f <module_ninja_file> <module_name>`。如果修改了mk或者bp文件需重新执行一次`mmm`命令
+`模块编译（以services.jar为例）`：执行一次 `mmm frameworks/base/services/`，out目录下会生成`build-xxx-_frameworks_base_services_Android.mk.ninja`类似的文件，执行`ninja -f out/build-xxx-_frameworks_base_services_Android.mk.ninja services`即可 ，即`ninja -f <module_ninja_file> <module_name>`。
+如果修改了mk或者bp文件需重新执行一次`mmm`命令
 `push`:与1.4.2一样
 
 

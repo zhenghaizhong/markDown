@@ -5,9 +5,9 @@
 ## 二.SELinux 策略语言介绍 (摘抄自网上，用于学习)
 ### 每个规则都要包含下面五个元素
 #### *  规则名称：` allow，dontaudit，auditallow和neverallow`
-• allow：表示允许主体对客体执行允许的操作
-• dontaudit：表示不记录违反规则的决策信息，且违反规则不影响运行(允许操作且不记录)
-• auditallow：表示允许操作并记录访问决策信息(允许操作且记录)
+• allow：表示允许主体对客体执行允许的操作  
+• dontaudit：表示不记录违反规则的决策信息，且违反规则不影响运行(允许操作且不记录)  
+• auditallow：表示允许操作并记录访问决策信息(允许操作且记录)  
 • neverallow： 表示不允许主体对客体执行指定的操作  
 #### * 源类型：`授予访问的类型，通常是进程的域类型`  
 #### * 目标类型：`客体的类型，它被授权可以访问的类型 ` 
@@ -44,15 +44,14 @@ __4.2 关于夜间壁纸需求，在壁纸文件的同级目录下新增夜间�
 
 结果编译不过：
  `17:15:44 libsepol.report_failure: neverallow on line 1161 of system/sepolicy/public/domain.te (or line 11890 of policy.conf) violated by allow platform_app system_data_file:file { write }; `
-`17:15:44 libsepol.report_failure: neverallow on line 458 of system/sepolicy/public/app.te (or line 8821 of policy.conf) violated by allow platform_app system_data_file:file { write };`
+`17:15:44 libsepol.report_failure: neverallow on line 458 of system/sepolicy/public/app.te (or line 8821 of policy.conf) violated by allow platform_app system_data_file:file { write };`  
 谷歌作了限制不允许这样子操作  
 
 最后，搜索代码发现：
  ![](pic/selinux_2.jpg)
-即把壁纸文件定义为wallpaper_file类型，而此类型很明显是支持应用进程去读写的。
-__修复方式:__
+即把壁纸文件定义为wallpaper_file类型，而此类型很明显是支持应用进程去读写的。  
+__修复方式:__  
 `/data/system/users/[0-9]+/wallpaper_lock_night_orig  u:object_r:wallpaper_file:s0`
-
 `/data/system/users/[0-9]+/wallpaper_night_orig       u:object_r:wallpaper_file:s0`
 
 

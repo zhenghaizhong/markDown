@@ -48,7 +48,10 @@ __4.2 关于夜间壁纸需求，在壁纸文件的同级目录下新增夜间�
 谷歌作了限制不允许这样子操作  
 
 最后，搜索代码发现：
- ![](pic/selinux_2.jpg)
+ ![](pic/selinux_2.jpg)  
+
+
+
 即把壁纸文件定义为wallpaper_file类型，而此类型很明显是支持应用进程去读写的。  
 __修复方式:__  
 `/data/system/users/[0-9]+/wallpaper_lock_night_orig  u:object_r:wallpaper_file:s0`

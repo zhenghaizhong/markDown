@@ -4,7 +4,7 @@
 `< waiting for any device >`
 sudo chown root:root c/bin/fastboot
 sudo chmod +s /usr/bin/fastboot
-###Android Q 之前：
+### Android Q 之前：
 
         重启手机并进入刷机状态 adb reboot bootloader
         选择要刷入的分区img:

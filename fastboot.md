@@ -1,8 +1,12 @@
 # fastboot
 
+##配置
+	sudo cp '/home/meizu/android-sdk-linux/platform-tools/fastboot'  /usr/local/bin/
+
+
 ## 更新升级
 `< waiting for any device >`
-sudo chown root:root c/bin/fastboot
+sudo chown root:root /usr/bin/fastboot
 sudo chmod +s /usr/bin/fastboot
 ### Android Q 之前：
 
@@ -34,4 +38,5 @@ _需更新fastboot工具，Android Q SDK sdk/platform-tools下的即可_
 `fastboot flash super super.img`  
 `sudo fastboot --disable-verity flash vbmeta vbmeta.img`  
 `sudo fastboot --disable-verity flash vbmeta_system vbmeta_system.img`  
+`fastboot --set-active=a`
 `fastboot reboot`

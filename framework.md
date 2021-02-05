@@ -7,12 +7,14 @@
 ####      ```4.lunch project_name```
 ####      ```5 ./build.sh --qssi_only -j4```
  <br/>
+ 
 ### 1.2 源码导入命令
 ####  ``` 1.source&lunch完之后```
 ####  ```2.make idegen && development/tools/idegen/idegen.sh```
 ####  ``` 3.对根目录生成的android.iml配置文件进行编辑优化，减少缩短导入时间```
 ####  ``` 4.Android Studio选中根目录的"android.ipr"打开项目```
 <br/>
+
 ### 1.3 个人遇见的问题
 #### Q1：无调试按钮(Attach debugger to Android process)
   `File->Project structure→Modules→右侧+号->“Android”`
@@ -27,6 +29,7 @@ no label, UUID=6e965805-2ab9-450f-aed6-577e74089dbf
 `5.sudo swapon /swapfile`启用
 `6.free -h`查看
 <br/>
+
 ### 1.4 模块编译
 #### 1.4.1 命令
 #### ```1. source&lunch完之后```
@@ -70,6 +73,7 @@ _确保代码与手机固件同步，两者都更新到最新就好了，不然�
 _push产物，不确定全不全对不对，可切到目录后，用ll命令把所有的修改时间符合的文件都push进去尝试，不然也可能开不了机_
 <br/>  
 <br/>   
+
 ## 二、 Ninja相关
 ### 2.1 什么是Ninja
 `类似与Make的注重速度的小型编译系统，旨在提升android的编译速度，ninja默认的入口文件是build.ninja`
